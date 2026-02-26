@@ -51,3 +51,8 @@
 - **Classes**: `FilterSortService`
 - **OOP**: Encapsulated filter and sort strategies as methods
 - **Java**: `Comparator.comparing()`, `Comparator.reversed()`, multi-condition `filter()` with Streams, `LocalDateTime` range comparison
+
+### UC11 — Tags Management
+- **Classes**: `Tag`, `TagRepository`, `TagService`
+- **OOP**: `equals()`/`hashCode()` override for name-based Tag equality, `Set<Tag>` for uniqueness on contacts
+- **Java**: `Optional.orElseGet()` for get-or-create, `HashMap` tag store, EnumSet-style uniqueness via `HashSet`
