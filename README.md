@@ -11,3 +11,8 @@
 - **Classes**: `SessionManager`, `AuthService`
 - **OOP**: Polymorphism (returns abstract `User`), session state encapsulation
 - **Java**: `Optional`, `static` session field, password hash comparison
+
+### UC3 — Profile Management
+- **Classes**: `ProfileService`
+- **OOP**: Setter methods with validation, encapsulated session guard
+- **Java**: Input validation, password re-verification before change
