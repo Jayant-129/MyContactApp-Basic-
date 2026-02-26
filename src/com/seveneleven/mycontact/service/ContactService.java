@@ -1,10 +1,11 @@
-// Provides business logic for contacts - UC5 adds displayContact() for viewing full details
+// Provides business logic for contacts - UC6 adds edit methods using setter-based mutation
 package com.seveneleven.mycontact.service;
 
 import com.seveneleven.mycontact.model.*;
 import com.seveneleven.mycontact.repository.ContactRepository;
 import com.seveneleven.mycontact.session.SessionManager;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,9 +49,62 @@ public class ContactService {
         System.out.println("Email added to " + c.getDisplayName());
     }
 
-    // UC5 — display full contact details using overridden toString()
     public void displayContact(UUID contactId) {
         System.out.println(getOwned(contactId));
+    }
+
+    // UC6 — edit person contact fields using setter methods with instanceof type check
+    public void editPersonName(UUID contactId, String firstName, String lastName) {
+        Contact c = getOwned(contactId);
+        if (!(c instanceof PersonContact))
+            throw new IllegalArgumentException("Not a person contact.");
+        PersonContact p = (PersonContact) c;
+        p.setFirstName(firstName);
+        p.setLastName(lastName);
+        contactRepository.save(p);
+        System.out.println("Name updated: " + p.getDisplayName());
+    }
+
+    public void editPersonBirthday(UUID contactId, LocalDate birthday) {
+        Contact c = getOwned(contactId);
+        if (!(c instanceof PersonContact))
+            throw new IllegalArgumentException("Not a person contact.");
+        ((PersonContact) c).setBirthday(birthday);
+        contactRepository.save(c);
+        System.out.println("Birthday updated.");
+    }
+
+    // UC6 — edit organisation contact fields using setter methods with instanceof type check
+    public void editOrgName(UUID contactId, String companyName) {
+        Contact c = getOwned(contactId);
+        if (!(c instanceof OrganizationContact))
+            throw new IllegalArgumentException("Not an organisation contact.");
+        ((OrganizationContact) c).setCompanyName(companyName);
+        contactRepository.save(c);
+        System.out.println("Company name updated: " + companyName);
+    }
+
+    public void editOrgWebsite(UUID contactId, String website) {
+        Contact c = getOwned(contactId);
+        if (!(c instanceof OrganizationContact))
+            throw new IllegalArgumentException("Not an organisation contact.");
+        ((OrganizationContact) c).setWebsite(website);
+        contactRepository.save(c);
+        System.out.println("Website updated: " + website);
+    }
+
+    public void removePhone(UUID contactId, String number) {
+        Contact c = getOwned(contactId);
+        c.removePhone(number);
+        contactRepository.save(c);
+        System.out.println("Phone removed.");
+    }
+
+    public void removeEmail(UUID contactId, String address) {
+        Contact c = getOwned(contactId);
+        c.removeEmail(address);
+        contactRepository.save(c);
+        System.out.println("Email removed.");
     }
 
     public List<Contact> listMyContacts() {

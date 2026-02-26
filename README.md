@@ -26,3 +26,8 @@
 - **Classes**: `Contact.toString()`, `PersonContact.toString()`, `OrganizationContact.toString()`, `ContactService.displayContact()`
 - **OOP**: Method overriding for formatted display, polymorphic `toString()`
 - **Java**: `StringBuilder`, `String.format`, chained `super.toString()`
+
+### UC6 — Edit Contacts
+- **Classes**: `PersonContact` setters, `OrganizationContact` setters, `ContactService.editPerson*()`, `ContactService.editOrg*()`
+- **OOP**: Setter methods with validation, `instanceof` type check before cast
+- **Java**: `LocalDate.parse()`, defensive validation before state mutation

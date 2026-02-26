@@ -1,4 +1,4 @@
-// Represents a personal contact - UC5 adds toString() showing name and birthday
+// Represents a personal contact - UC6 adds setter methods for editing name and birthday
 package com.seveneleven.mycontact.model;
 
 import java.time.LocalDate;
@@ -27,7 +27,21 @@ public class PersonContact extends Contact {
     public String    getLastName()  { return lastName; }
     public LocalDate getBirthday()  { return birthday; }
 
-    // UC5 — shows person-specific details appended to base toString()
+    // UC6 — setter methods to edit person details with validation
+    public void setFirstName(String firstName) {
+        if (firstName == null || firstName.trim().isEmpty())
+            throw new IllegalArgumentException("First name cannot be empty.");
+        this.firstName = firstName.trim();
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = (lastName == null) ? "" : lastName.trim();
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
