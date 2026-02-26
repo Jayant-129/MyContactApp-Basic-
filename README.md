@@ -36,3 +36,8 @@
 - **Classes**: `Contact.softDelete()`, `ContactRepository.hardDelete()`, `ContactService.softDeleteContact()`, `ContactService.hardDeleteContact()`
 - **OOP**: Lifecycle state managed via `boolean deleted` flag, encapsulated delete logic
 - **Java**: `HashMap.remove()` for hard delete, `isDeleted()` filter in repository queries
+
+### UC8 — Groups & Bulk Operations
+- **Classes**: `ContactGroup`, `GroupRepository`, `GroupService`
+- **OOP**: Encapsulated group state, Collection-based bulk operations
+- **Java**: `List<Contact>`, `forEach` + lambda for bulk tag/delete, `Collections.unmodifiableList`
