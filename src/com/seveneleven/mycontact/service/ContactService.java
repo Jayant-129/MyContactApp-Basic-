@@ -1,4 +1,4 @@
-// Provides business logic for creating contacts and managing phones, emails (UC4 - create only)
+// Provides business logic for contacts - UC5 adds displayContact() for viewing full details
 package com.seveneleven.mycontact.service;
 
 import com.seveneleven.mycontact.model.*;
@@ -46,6 +46,11 @@ public class ContactService {
         c.addEmail(new EmailAddress(address, label));
         contactRepository.save(c);
         System.out.println("Email added to " + c.getDisplayName());
+    }
+
+    // UC5 — display full contact details using overridden toString()
+    public void displayContact(UUID contactId) {
+        System.out.println(getOwned(contactId));
     }
 
     public List<Contact> listMyContacts() {

@@ -1,4 +1,4 @@
-// Abstract base class representing a contact with phones, emails, tags, and owner info (UC4 - create only)
+// Abstract base class representing a contact - UC5 adds toString() for formatted display
 package com.seveneleven.mycontact.model;
 
 import java.time.LocalDateTime;
@@ -37,10 +37,35 @@ public abstract class Contact {
     public void incrementContactCount()       { contactCount++; }
     public int  getContactCount()             { return contactCount; }
 
-    public UUID             getContactId()  { return contactId; }
-    public UUID             getOwnerId()    { return ownerId; }
-    public List<PhoneNumber> getPhones()    { return Collections.unmodifiableList(phones); }
-    public List<EmailAddress> getEmails()   { return Collections.unmodifiableList(emails); }
-    public Set<Tag>          getTags()      { return Collections.unmodifiableSet(tags); }
-    public LocalDateTime     getCreatedAt() { return createdAt; }
+    public UUID              getContactId()  { return contactId; }
+    public UUID              getOwnerId()    { return ownerId; }
+    public List<PhoneNumber> getPhones()     { return Collections.unmodifiableList(phones); }
+    public List<EmailAddress> getEmails()    { return Collections.unmodifiableList(emails); }
+    public Set<Tag>          getTags()       { return Collections.unmodifiableSet(tags); }
+    public LocalDateTime     getCreatedAt()  { return createdAt; }
+
+    // UC5 — formatted display of a contact's full details
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Contact : ").append(getDisplayName()).append("\n");
+        sb.append("  ID    : ").append(contactId).append("\n");
+        if (!phones.isEmpty()) {
+            sb.append("  Phones: ");
+            phones.forEach(p -> sb.append(p).append("  "));
+            sb.append("\n");
+        }
+        if (!emails.isEmpty()) {
+            sb.append("  Emails: ");
+            emails.forEach(e -> sb.append(e).append("  "));
+            sb.append("\n");
+        }
+        if (!tags.isEmpty()) {
+            sb.append("  Tags  : ");
+            tags.forEach(t -> sb.append(t).append(" "));
+            sb.append("\n");
+        }
+        sb.append("  Added : ").append(createdAt).append("\n");
+        return sb.toString();
+    }
 }

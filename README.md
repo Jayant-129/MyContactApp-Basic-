@@ -21,3 +21,8 @@
 - **Classes**: `Contact` (abstract), `PersonContact`, `OrganizationContact`, `PhoneNumber`, `EmailAddress`, `Tag`, `ContactRepository`, `ContactService`
 - **OOP**: Abstract class hierarchy, Composition (`Contact` has `List<PhoneNumber>` + `List<EmailAddress>` + `Set<Tag>`), Polymorphism (`getDisplayName()`)
 - **Java**: `UUID`, `LocalDateTime`, `Collections.unmodifiableList`, `equals()`/`hashCode()` on `Tag`
+
+### UC5 — View Contact Details
+- **Classes**: `Contact.toString()`, `PersonContact.toString()`, `OrganizationContact.toString()`, `ContactService.displayContact()`
+- **OOP**: Method overriding for formatted display, polymorphic `toString()`
+- **Java**: `StringBuilder`, `String.format`, chained `super.toString()`

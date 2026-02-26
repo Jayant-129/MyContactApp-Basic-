@@ -1,4 +1,4 @@
-// Represents an organization contact with company name and website (UC4 - create only, no setters)
+// Represents an organization contact - UC5 adds toString() showing company and website
 package com.seveneleven.mycontact.model;
 
 import java.util.UUID;
@@ -20,4 +20,13 @@ public class OrganizationContact extends Contact {
 
     public String getCompanyName() { return companyName; }
     public String getWebsite()     { return website; }
+
+    // UC5 — shows organisation-specific details appended to base toString()
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        if (website != null && !website.isEmpty())
+            sb.append("  Web   : ").append(website).append("\n");
+        return sb.toString();
+    }
 }

@@ -1,4 +1,4 @@
-// Represents a personal contact with first name, last name, and birthday (UC4 - create only, no setters)
+// Represents a personal contact - UC5 adds toString() showing name and birthday
 package com.seveneleven.mycontact.model;
 
 import java.time.LocalDate;
@@ -26,4 +26,13 @@ public class PersonContact extends Contact {
     public String    getFirstName() { return firstName; }
     public String    getLastName()  { return lastName; }
     public LocalDate getBirthday()  { return birthday; }
+
+    // UC5 — shows person-specific details appended to base toString()
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        if (birthday != null)
+            sb.append("  DOB   : ").append(birthday).append("\n");
+        return sb.toString();
+    }
 }
