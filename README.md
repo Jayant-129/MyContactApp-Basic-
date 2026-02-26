@@ -6,3 +6,8 @@
 - **Classes**: `User` (abstract), `FreeUser`, `PremiumUser`, `UserRole` (enum), `PasswordHasher`, `InputValidator`, `UserRepository`
 - **OOP**: Encapsulation (private fields + getters/setters), Inheritance (`FreeUser`/`PremiumUser` extend `User`), Abstraction (`getUserType()`)
 - **Java**: `UUID`, `MessageDigest` (SHA-256), regex validation, `HashMap` in-memory store
+
+### UC2 — User Authentication
+- **Classes**: `SessionManager`, `AuthService`
+- **OOP**: Polymorphism (returns abstract `User`), session state encapsulation
+- **Java**: `Optional`, `static` session field, password hash comparison
